@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Той — список дел</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <img class="logo" src="images/icon-logo.svg" alt="">
+    <div>
+      <h1 class="brand">Той</h1>
+      <p class="tagline">Список дел к празднику</p>
+    </div>
+  </header>
+  <main class="page">
+    <section class="block card">
+      <h2 class="party-title">Название тоя</h2>
+      <p class="party-date">Дата</p>
+      <p class="counter-line">
+        <button class="round guests-minus">−</button>
+        <span class="num guests-num">0</span> гостей
+        <button class="round guests-plus">+</button>
+      </p>
+    </section>
+    <section class="block">
+      <h2>Дела к тою</h2>
+      <p class="stats">Готово: 0 из 0</p>
+      <form class="task-form add-form">
+        <input name="text" aria-label="Дело" placeholder="Новое дело">
+        <button class="btn">Добавить</button>
+      </form>
+      <div class="chips">
+        <button class="chip" data-filter="all">Все</button>
+        <button class="chip" data-filter="todo">Осталось</button>
+        <button class="chip" data-filter="done">Готово</button>
+      </div>
+      <input class="search" type="search"
+             aria-label="Найти дело" placeholder="Найти дело">
+      <ul class="list tasks"></ul>
+      <button class="btn-small clear-done">Убрать готовые</button>
+    </section>
+    <section class="block">
+      <h2>Покупки</h2>
+      <form class="buy-form add-form">
+        <input name="text" aria-label="Покупка" placeholder="Что купить">
+        <input name="price" aria-label="Цена" placeholder="Цена, ₸">
+        <button class="btn">Добавить</button>
+      </form>
+      <label class="check">
+        <input class="buys-sort" type="checkbox"> Сначала дорогие
+      </label>
+      <ul class="list buys"></ul>
+      <p class="total buys-total">Итого: 0 ₸</p>
+    </section>
+  </main>
+</body>
+</html>
