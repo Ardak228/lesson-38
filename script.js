@@ -25,7 +25,7 @@ const state = {
 document.querySelector(".party-title").textContent = state.title;
 document.querySelector(".party-date").textContent = `Дата: ${state.date}`;
 console.log(state);
-console.log("Дел в состоянии:", state.tasks.length);
+// console.log("Дел в состоянии:", state.tasks.length);
 
 // ===== Шаг 2. render: список дел =====
 const tasksList = document.querySelector(".tasks");
@@ -91,6 +91,7 @@ taskForm.addEventListener("submit", (event) => {
   }
   state.tasks.push({ id: state.nextId, text: text, done: false });
   state.nextId = state.nextId + 1;
+  save();
   taskForm.reset();
   render();
   console.log("Добавили, nextId:", state.nextId);
@@ -222,7 +223,28 @@ localStorage.setItem("toi-visits", visits);
 // ✎ в .visits — «Открытий: ...» из visits
 console.log("Из хранилища:", savedVisits, "| открытий:", visits);
 
+const KEY = "toi";
+
+function save() {
+  const json = JSON.stringify(state);
+  localStorage.setItem("toi", json);
+}
+
+function load() {
+  const json = localStorage.getItem(KEY);
+
+  if (json === null) {
+    return;
+  }
+
+  const data = JSON.parse(json);
+
+  Object.assign(state, data);
+  console.log("Загрузили дел:", state.tasks.length);
+}
+
 // ===== Запуск =====
+load();
 render();
 console.log("Пунктов в списке:", tasksList.children.length);
 console.log(stats.textContent);
