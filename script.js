@@ -52,6 +52,7 @@ function render() {
   renderStats();
   renderChips();
   renderBuys();
+  save();
 }
 
 // ===== Шаг 3. Событие → состояние → render: гости =====
@@ -91,7 +92,6 @@ taskForm.addEventListener("submit", (event) => {
   }
   state.tasks.push({ id: state.nextId, text: text, done: false });
   state.nextId = state.nextId + 1;
-  save();
   taskForm.reset();
   render();
   console.log("Добавили, nextId:", state.nextId);
