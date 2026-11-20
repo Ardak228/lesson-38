@@ -216,6 +216,12 @@ themeBtn.addEventListener("click", () => {
 
 console.log("Тема при загрузке:", theme);
 
+const savedVisits = localStorage.getItem("toi-visits");
+const visits = Number(savedVisits) + 1;
+localStorage.setItem("toi-visits", visits);
+// ✎ в .visits — «Открытий: ...» из visits
+console.log("Из хранилища:", savedVisits, "| открытий:", visits);
+
 // ===== Запуск =====
 render();
 console.log("Пунктов в списке:", tasksList.children.length);
